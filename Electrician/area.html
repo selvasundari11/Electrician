@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Dreams - Electrical Experts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+<style>
+    /* Wrapper */
+.areas-section {
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .areas-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+    text-align: center;
+  }
+  
+  /* Heading */
+  .areas-heading {
+    color: #d65b22;
+    margin: 0 0 8px;
+    font-size: 24px;
+  }
+  
+  .areas-subtitle {
+    margin: 0 0 25px;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  
+  /* Each cell */
+  .area-item {
+    background: #f3f3f3;
+    border: 1px solid #dcdcdc;
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .areas-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .areas-inner {
+      padding: 30px 15px 40px;
+    }
+  
+    .areas-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+</style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <img src="images/IMG_20250618_142909_276-removebg-preview.png" alt="Electric Dreams Logo">
+            <span class="logo-text">Electric dreams</span>
+        </div>
+        <div class="cta-buttons">
+            <a href="tel:+911234567890" class="call-btn">Call(+91)1234567890</a>
+            <a href="#" class="book-btn">Book Now</a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search electricians">
+        </div>
+        
+        <i class="fa fa-bars menu-toggle" id="mobile-menu"></i>
+
+        <ul class="nav-links" id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services <i class="fa fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
+            <li><a href="Emergency.html">Emergency electrician</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="area.html">Areas we services</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li>
+                <a href="javascript:void(0)" id="cartTrigger">
+                  <i class="fa fa-shopping-cart"></i> Cart
+                </a>
+              </li>
+              
+              <div id="cartSidebar" class="cart-modal">
+                <div class="cart-content">
+
+                    <!-- Cart Title -->
+                    <h2>Your Cart</h2>
+                  
+                    <!-- Cart Item -->
+                    <div class="cart-item">
+                      <div class="item-details">
+                        <div class="item-title">Bulb/tubelight holder installation</div>
+                        <div class="item-qty">
+                          <button class="qty-btn" onclick="updateQty(-1)">−</button>
+                          <span id="qtyValue">1</span>
+                          <button class="qty-btn" onclick="updateQty(1)">+</button>
+                        </div>
+                      </div>
+                      <div class="item-price">₹109</div>
+                    </div>
+                  
+                    <!-- Amount Summary -->
+                    <div class="cart-summary">
+                      <div>Amount: <strong id="amountTotal">₹109</strong></div>
+                    </div>
+                  
+                    <!-- Visit Fees Notice -->
+                    <div class="visit-fee-notice">
+                      <small>Add ₹92 more to save on visitation fees</small>
+                    </div>
+                  
+                    <!-- Book Button -->
+                    <button class="book-btn">Book now</button>
+                  
+                    <!-- Get Visitation Fees Offer -->
+                    <div class="offer-box">
+                      <div class="offer-title">Get visitation fees offer</div>
+                      <div class="offer-text">On orders above ₹200</div>
+                      <a href="#" class="offer-link">View more offers</a>
+                    </div>
+                  
+                    <!-- UC Promise -->
+                    <div class="uc-promise">
+                      <div><strong>UC promise</strong></div>
+                      <ul>
+                        <li>✔ Verified professionals</li>
+                        <li>✔ Hassle free booking</li>
+                        <li>✔ Transparent pricing</li>
+                      </ul>
+                    </div>
+                  
+                  </div>
+                  
+        </ul>
+    </nav>
+<!-- Areas We Services Section -->
+<section class="areas-section">
+    <div class="areas-inner">
+      <h2 class="areas-heading">Areas we services</h2>
+      <p class="areas-subtitle">
+        Below are some areas we provide electrical services to. But, don’t worry if your area is not listed, We likely service your area too!
+      </p>
+  
+      <div class="areas-grid">
+        <div class="area-item">Alvalur</div>
+        <div class="area-item">Chengalpattu</div>
+        <div class="area-item">Chennai</div>
+  
+        <div class="area-item">Coimbatore</div>
+        <div class="area-item">Cuddalore</div>
+        <div class="area-item">Dharmapuri</div>
+  
+        <div class="area-item">Dindigul</div>
+        <div class="area-item">Erode</div>
+        <div class="area-item">Kallakurichi</div>
+  
+        <div class="area-item">Kancheepuram</div>
+        <div class="area-item">Kanyakumari</div>
+        <div class="area-item">Karur</div>
+  
+        <div class="area-item">Krishnagiri</div>
+        <div class="area-item">Madurai</div>
+        <div class="area-item">Mayiladuthurai</div>
+  
+        <div class="area-item">Nagapattinam</div>
+        <div class="area-item">Namakkal</div>
+        <div class="area-item">Nilgiris</div>
+  
+        <div class="area-item">Perambalur</div>
+        <div class="area-item">Pudukkottai</div>
+        <div class="area-item">Ramanathapuram</div>
+  
+        <div class="area-item">Ranipet</div>
+        <div class="area-item">Salem</div>
+        <div class="area-item">Sivagangai</div>
+  
+        <div class="area-item">Tenkasi</div>
+        <div class="area-item">Thanjavur</div>
+        <div class="area-item">Theni</div>
+  
+        <div class="area-item">Thoothukudi</div>
+        <div class="area-item">Tiruchirappalli</div>
+        <div class="area-item">Tirunelveli</div>
+  
+        <div class="area-item">Tirupattur</div>
+        <div class="area-item">Tiruppur</div>
+        <div class="area-item">Tiruvallur</div>
+  
+        <div class="area-item">Tiruvannamalai</div>
+        <div class="area-item">Tiruvarur</div>
+        <div class="area-item">Vellore</div>
+  
+        <div class="area-item">Villupuram</div>
+        <div class="area-item">Virudhunagar</div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-banner">
+    <div class="cta-banner-content">
+        <h2>Get in Touch with Electric Dreams <br> Electrical Today</h2>
+        <a href="tel:+911234567890" class="banner-call-btn">Call(+91)1234567890</a>
+    </div>
+</section>
+<footer class="main-footer">
+  <div class="footer-grid">
+      <div class="footer-column brand-col">
+          <div class="footer-logo">
+              <img src="images/IMG_20250618_142909_276-removebg-preview.png" alt="Electric Dreams">
+              <span class="logo-text-white">Electric dreams</span>
+          </div>
+          <p>Voltaic Electrical provides expert residential, commercial, and emergency electrical services across Perth.</p>
+          <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+          </div>
+      </div>
+
+      <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+              <li><a href="#">Lighting</a></li>
+              <li><a href="#">Private Power Poles</a></li>
+              <li><a href="#">Smoke Alarms</a></li>
+              <li><a href="#">EV Chargers</a></li>
+              <li><a href="#">Air Conditioning</a></li>
+              <li><a href="#">Thermographic Imaging</a></li>
+              <li><a href="#">View All</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Service Areas</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Resources</a></li>
+              <li><a href="#">Sitemap</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column contact-col">
+          <h4>Get in Touch</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Location, Chennai</p>
+          <p><i class="fas fa-phone-alt"></i> (+91)1234567890</p>
+          <p><i class="fas fa-envelope"></i> Support@electricdreams.com</p>
+      </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('mobile-menu');
+  const navList = document.getElementById('nav-list');
+
+  menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+      // Toggle between bars and X icon
+      menuToggle.classList.toggle('fa-bars');
+      menuToggle.classList.toggle('fa-times');
+  });
+
+  
+  let qty = 1;
+  const price = 109;
+  
+  function updateQty(val) {
+    qty += val;
+    if (qty < 1) qty = 1;
+    document.getElementById("qtyValue").textContent = qty;
+    document.getElementById("amountTotal").textContent = "₹" + (qty * price);
+  }
+  
+  document.getElementById("cartTrigger").addEventListener("click", () => {
+    document.getElementById("cartSidebar").classList.toggle("open");
+  });
+    </script>
+    
+
+
+</body>
+</html>
+  

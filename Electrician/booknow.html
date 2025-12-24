@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Dreams - Electrical Experts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+<style>
+    .checkout-wrapper {
+        display: flex;
+        gap: 24px;
+        padding: 16px;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+      }
+      
+      /* Columns */
+      .summary-card,
+      .checkout-card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.15);
+        padding: 16px 20px;
+        box-sizing: border-box;
+      }
+      
+      .summary-card {
+        max-width: 360px;
+        flex: 1 1 280px;
+        background-color: #f46b29;
+        color: #fff;
+      }
+      
+      .checkout-card {
+        flex: 2 1 320px;
+      }
+      
+      /* Summary card */
+      .summary-header {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+        align-items: center;
+      }
+      
+      .summary-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+        object-fit: cover;
+        background: #fff;
+      }
+      
+      .summary-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      
+      .summary-sub {
+        font-size: 13px;
+      }
+      
+      .summary-section-title {
+        margin: 12px 0 8px;
+        font-weight: 600;
+        border-top: 1px solid rgba(255,255,255,0.4);
+        padding-top: 10px;
+      }
+      
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+      
+      .summary-row.total {
+        margin-top: 6px;
+        font-weight: 600;
+      }
+      
+      .summary-row.amount-pay {
+        border-top: 1px solid rgba(255,255,255,0.4);
+        padding-top: 8px;
+        margin-top: 8px;
+        font-weight: 600;
+      }
+      
+      .summary-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      
+      .btn-outline,
+      .btn-primary {
+        flex: 1;
+        padding: 8px 0;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid #fff;
+        background: transparent;
+        color: #fff;
+      }
+      
+      .btn-primary {
+        background: #fff;
+        color: #f46b29;
+      }
+      
+      .date-select {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+      
+      .date-select label {
+        display: block;
+        margin-bottom: 6px;
+      }
+      
+      .date-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 4px;
+        border: 1px solid #fff;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+      }
+      
+      .date-icon {
+        font-size: 18px;
+      }
+      
+      /* Checkout form */
+      .checkout-title {
+        margin: 0 0 16px;
+      }
+      
+      .section-heading {
+        margin: 16px 0 10px;
+        font-size: 16px;
+      }
+      
+      .form-row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      
+      .form-group {
+        flex: 1 1 150px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+      }
+      
+      .form-group.full {
+        width: 100%;
+      }
+      
+      .form-group label {
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      
+      .form-group input {
+        padding: 8px 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+      
+      /* Payment buttons */
+      .payment-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      
+      .pay-btn {
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-size: 14px;
+        text-align: center;
+      }
+      
+      .pay-now-btn {
+        width: 160px;
+        max-width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        background: #f46b29;
+        color: #fff;
+        cursor: pointer;
+        font-size: 15px;
+      }
+      
+      /* Responsive behavior */
+      @media (max-width: 768px) {
+        .checkout-wrapper {
+          padding: 12px;
+        }
+      
+        .summary-card,
+        .checkout-card {
+          width: 100%;
+        }
+      
+        .summary-card {
+          max-width: none;
+        }
+      
+        .summary-actions {
+          flex-direction: row;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .form-row {
+          flex-direction: column;
+        }
+      
+        .pay-now-btn {
+          width: 100%;
+        }
+      }
+      .payment-success {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        display: none;              /* hidden by default */
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .payment-success.active {
+        display: flex;              /* show when active */
+      }
+      
+      .success-card {
+        background: #fff;
+        padding: 24px 32px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+      
+      .success-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 10px;
+        border-radius: 50%;
+        background: #f46b29;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+      }
+      
+      .back-btn {
+        margin-top: 16px;
+        padding: 8px 20px;
+        border-radius: 20px;
+        border: none;
+        background: #f46b29;
+        color: #fff;
+        cursor: pointer;
+      }
+      
+      .pay-btn {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;              /* place icon + text in a row */
+        align-items: center;
+        justify-content: center;
+        gap: 8px;                   /* space between icon and text */
+      }
+      
+      .pay-icon {
+        width: 32px;                /* adjust size as needed */
+        height: auto;
+        display: block;
+      }
+       
+</style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <img src="images/IMG_20250618_142909_276-removebg-preview.png" alt="Electric Dreams Logo">
+            <span class="logo-text">Electric dreams</span>
+        </div>
+        <div class="cta-buttons">
+            <a href="tel:+911234567890" class="call-btn">Call(+91)1234567890</a>
+            <a href="#" class="book-btn">Book Now</a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search electricians">
+        </div>
+        
+        <i class="fa fa-bars menu-toggle" id="mobile-menu"></i>
+
+        <ul class="nav-links" id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services <i class="fa fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
+            <li><a href="Emergency.html">Emergency electrician</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="area.html">Areas we services</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li>
+                <a href="javascript:void(0)" id="cartTrigger">
+                  <i class="fa fa-shopping-cart"></i> Cart
+                </a>
+              </li>
+              
+              <div id="cartSidebar" class="cart-modal">
+                <div class="cart-content">
+
+                    <!-- Cart Title -->
+                    <h2>Your Cart</h2>
+                  
+                    <!-- Cart Item -->
+                    <div class="cart-item">
+                      <div class="item-details">
+                        <div class="item-title">Bulb/tubelight holder installation</div>
+                        <div class="item-qty">
+                          <button class="qty-btn" onclick="updateQty(-1)">−</button>
+                          <span id="qtyValue">1</span>
+                          <button class="qty-btn" onclick="updateQty(1)">+</button>
+                        </div>
+                      </div>
+                      <div class="item-price">₹109</div>
+                    </div>
+                  
+                    <!-- Amount Summary -->
+                    <div class="cart-summary">
+                      <div>Amount: <strong id="amountTotal">₹109</strong></div>
+                    </div>
+                  
+                    <!-- Visit Fees Notice -->
+                    <div class="visit-fee-notice">
+                      <small>Add ₹92 more to save on visitation fees</small>
+                    </div>
+                  
+                    <!-- Book Button -->
+                    <button class="book-btn">Book now</button>
+                  
+                    <!-- Get Visitation Fees Offer -->
+                    <div class="offer-box">
+                      <div class="offer-title">Get visitation fees offer</div>
+                      <div class="offer-text">On orders above ₹200</div>
+                      <a href="#" class="offer-link">View more offers</a>
+                    </div>
+                  
+                    <!-- UC Promise -->
+                    <div class="uc-promise">
+                      <div><strong>UC promise</strong></div>
+                      <ul>
+                        <li>✔ Verified professionals</li>
+                        <li>✔ Hassle free booking</li>
+                        <li>✔ Transparent pricing</li>
+                      </ul>
+                    </div>
+                  
+                  </div>
+                  
+        </ul>
+    </nav>
+<div class="checkout-wrapper">
+    <!-- Left: Payment summary -->
+    <div class="summary-card">
+      <div class="summary-header">
+        <img src="images/image (13).png" alt="Item" class="summary-img">
+        <div class="summary-text">
+          <div class="summary-title">Bulb/tubelight holder installation</div>
+          <div class="summary-sub">Light quantity: 1</div>
+          <div class="summary-sub">Amount: ₹109</div>
+        </div>
+      </div>
+  
+      <div class="summary-section-title">Payment summary</div>
+      <div class="summary-row">
+        <span>Item total</span>
+        <span>₹109</span>
+      </div>
+      <div class="summary-row">
+        <span>Visitation fees</span>
+        <span>₹60</span>
+      </div>
+      <div class="summary-row">
+        <span>Taxes and fees</span>
+        <span>₹19</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total Amount</span>
+        <span>₹188</span>
+      </div>
+      <div class="summary-row amount-pay">
+        <span>Amount to pay</span>
+        <span>₹188</span>
+      </div>
+  
+      <div class="summary-actions">
+        <button class="btn-outline">Delete</button>
+        <button class="btn-primary">Proceed</button>
+      </div>
+  
+      <div class="date-select">
+        <label>Select Services date</label>
+        <button class="date-btn">
+          <span class="date-icon">📅</span>
+          <span>DD/MM/YY</span>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Right: Checkout form -->
+    <div class="checkout-card">
+      <h2 class="checkout-title">Checkout</h2>
+  
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="First Name">
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Last Name">
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="Email id">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Phone number">
+        </div>
+      </div>
+  
+      <div class="form-group full">
+        <label>Address</label>
+        <input type="text" placeholder="Address">
+      </div>
+  
+      <h3 class="section-heading">Payment Details</h3>
+  
+      <div class="payment-buttons">
+        <button class="pay-btn">Pay with UPI</button>
+        <button class="pay-btn">
+          
+            <span>Pay with NetBanking</span>
+            <img src="images/image (21).png" alt="" class="pay-icon">
+          </button>
+          
+          <button class="pay-btn">
+           
+            <span>Pay with card  </span>
+            <img src="images/image (22).png" alt="" class="pay-icon">
+          </button>
+          
+      </div>
+  
+     <!-- Pay button -->
+<button class="pay-now-btn" id="payNowBtn">Pay Now</button>
+
+<!-- Success popup -->
+<div class="payment-success" id="paymentSuccess">
+  <div class="success-card">
+    <div class="success-icon">✔</div>
+    <h2>Payment completed</h2>
+    <p>Thank you for choosing our electrician services<br>
+       We will contact you soon</p>
+    <button class="back-btn" id="backBtn" onclick="window.location.href='index.html'">Back</button>
+  </div>
+</div>
+
+    </div>
+  </div>
+  
+  <footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-column brand-col">
+            <div class="footer-logo">
+                <img src="images/IMG_20250618_142909_276-removebg-preview.png" alt="Electric Dreams">
+                <span class="logo-text-white">Electric dreams</span>
+            </div>
+            <p>Voltaic Electrical provides expert residential, commercial, and emergency electrical services across Perth.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">Lighting</a></li>
+                <li><a href="#">Private Power Poles</a></li>
+                <li><a href="#">Smoke Alarms</a></li>
+                <li><a href="#">EV Chargers</a></li>
+                <li><a href="#">Air Conditioning</a></li>
+                <li><a href="#">Thermographic Imaging</a></li>
+                <li><a href="#">View All</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Service Areas</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Sitemap</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column contact-col">
+            <h4>Get in Touch</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Location, Chennai</p>
+            <p><i class="fas fa-phone-alt"></i> (+91)1234567890</p>
+            <p><i class="fas fa-envelope"></i> Support@electricdreams.com</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        // Toggle between bars and X icon
+        menuToggle.classList.toggle('fa-bars');
+        menuToggle.classList.toggle('fa-times');
+    });
+
+    
+    let qty = 1;
+    const price = 109;
+    
+    function updateQty(val) {
+      qty += val;
+      if (qty < 1) qty = 1;
+      document.getElementById("qtyValue").textContent = qty;
+      document.getElementById("amountTotal").textContent = "₹" + (qty * price);
+    }
+    
+    document.getElementById("cartTrigger").addEventListener("click", () => {
+      document.getElementById("cartSidebar").classList.toggle("open");
+    });
+    
+        const payBtn   = document.getElementById('payNowBtn');
+        const success  = document.getElementById('paymentSuccess');
+        const backBtn  = document.getElementById('backBtn');
+      
+        payBtn.addEventListener('click', function () {
+          // here you would also run real payment logic / validation
+          success.classList.add('active');   // open popup
+        });
+      
+        backBtn.addEventListener('click', function () {
+          success.classList.remove('active'); // close popup
+          // optional: redirect
+          // window.location.href = 'index.html';
+        });
+      
+        // close when clicking outside the card (optional)
+        success.addEventListener('click', function (e) {
+          if (e.target === success) success.classList.remove('active');
+        });
+      </script>
+      
+
+
+</body>
+</html>
+  
